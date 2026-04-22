@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>收費方案 | 松齡養老之家</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .pricing-note {
+      background:rgba(200,112,58,.08);
+      border:1.5px solid rgba(200,112,58,.2);
+      border-radius:var(--radius-md);
+      padding:20px 24px;
+      display:flex; align-items:flex-start; gap:12px;
+      margin-bottom:48px;
+      font-size:.88rem; color:var(--text-medium); line-height:1.7;
+    }
+    .pricing-note-icon { font-size:1.2rem; flex-shrink:0; margin-top:1px; }
+
+    .add-on-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:800px){ .add-on-grid{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:480px){ .add-on-grid{ grid-template-columns:1fr; } }
+
+    .add-on-card {
+      background:var(--bg-white); border-radius:var(--radius-md);
+      border:1.5px solid var(--border-light); padding:24px 20px;
+      display:flex; align-items:flex-start; gap:16px;
+      transition:var(--transition);
+    }
+    .add-on-card:hover { border-color:var(--primary); transform:translateY(-2px); box-shadow:var(--shadow-sm); }
+    .add-on-icon  { font-size:1.8rem; flex-shrink:0; }
+    .add-on-name  { font-weight:600; font-size:.92rem; margin-bottom:4px; }
+    .add-on-desc  { font-size:.8rem; color:var(--text-light); line-height:1.6; margin-bottom:8px; }
+    .add-on-price { font-size:.85rem; font-weight:700; color:var(--primary); }
+
+    .subsidy-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    @media(max-width:600px){ .subsidy-grid{ grid-template-columns:1fr; } }
+
+    .subsidy-card {
+      background:var(--bg-white); border-radius:var(--radius-lg);
+      border:1.5px solid var(--border-light); padding:32px 28px;
+      transition:var(--transition);
+    }
+    .subsidy-card:hover { border-color:var(--secondary); transform:translateY(-3px); box-shadow:var(--shadow-sm); }
+    .subsidy-icon  { font-size:2rem; margin-bottom:12px; }
+    .subsidy-name  { font-size:1.05rem; font-weight:700; margin-bottom:8px; }
+    .subsidy-desc  { font-size:.87rem; color:var(--text-light); line-height:1.7; margin-bottom:16px; }
+    .subsidy-link  { font-size:.85rem; font-weight:600; color:var(--secondary); display:flex; align-items:center; gap:4px; }
+
+    .compare-table { width:100%; border-collapse:separate; border-spacing:0; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
+    .compare-table th, .compare-table td { padding:16px 20px; text-align:center; border-bottom:1px solid var(--border-light); }
+    .compare-table thead tr { background:var(--text-dark); color:#fff; }
+    .compare-table thead th:first-child { text-align:left; border-radius:var(--radius-lg) 0 0 0; }
+    .compare-table thead th:last-child  { border-radius:0 var(--radius-lg) 0 0; }
+    .compare-table tbody tr:nth-child(even) { background:var(--bg-cream); }
+    .compare-table tbody tr:hover          { background:rgba(200,112,58,.04); }
+    .compare-table tbody td:first-child    { text-align:left; font-weight:600; font-size:.9rem; color:var(--text-dark); }
+    .compare-table tbody td               { font-size:.88rem; color:var(--text-medium); }
+    .compare-table tfoot tr               { background:var(--bg-cream); font-weight:700; }
+    .compare-table tfoot td:first-child   { font-weight:700; color:var(--text-dark); }
+    .check-td  { color:var(--secondary); font-size:1.1rem; }
+    .cross-td  { color:#ccc; font-size:1rem; }
+    .featured-col { background:rgba(200,112,58,.06) !important; font-weight:700; color:var(--primary) !important; }
+    .featured-header { background:var(--primary) !important; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">🌲</div>
+      <div class="nav-logo-text">
+        <div class="nav-logo-zh">松齡養老之家</div>
+        <div class="nav-logo-en">Pine Age Care Home</div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html"      class="nav-link">首頁</a>
+      <a href="about.html"      class="nav-link">關於我們</a>
+      <a href="services.html"   class="nav-link">服務介紹</a>
+      <a href="facilities.html" class="nav-link">設施環境</a>
+      <a href="pricing.html"    class="nav-link active">收費方案</a>
+      <a href="contact.html"    class="nav-link">聯絡我們</a>
+      <a href="booking.html"    class="nav-link nav-cta">立即預約</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <div class="page-hero-label">Pricing · 收費方案</div>
+    <h1>透明合理的收費方案</h1>
+    <p>我們提供清晰透明的收費結構，並協助您了解各項政府補助與長照給付，讓您安心選擇。</p>
+    <div class="breadcrumb">
+      <a href="index.html">首頁</a><span class="sep">›</span>
+      <span class="current">收費方案</span>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Cards -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-label">Plans · 方案一覽</span>
+      <h2 class="section-title">選擇最適合的<span>照護方案</span></h2>
+      <p class="section-subtitle">所有方案均含基本照護服務、三餐膳食、活動課程及 24 小時護理服務。</p>
+    </div>
+
+    <div class="pricing-note reveal">
+      <span class="pricing-note-icon">ℹ️</span>
+      <span>以下費用為參考基準，實際金額依入住者照護需求等級評估後確定。長照保險給付、政府補助及低收入戶優惠另計。如需精確報價，歡迎預約免費評估。</span>
+    </div>
+
+    <div class="pricing-grid reveal">
+      <!-- Basic -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Basic Plan · 基礎方案</div>
+        <div class="pricing-name">輕度照護</div>
+        <div class="pricing-desc">適合生活基本自理、需少量協助的長輩，享受溫馨的社區生活環境。</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">NT$</span>
+          <span class="pricing-amount">42,000</span>
+        </div>
+        <div class="pricing-period">每月起 / Month (未含長照補助)</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><span class="feature-check">✓</span>單人標準房</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>每日三餐 + 下午茶</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>生活照護協助</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>定期健康量測</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>團體活動課程</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>24 小時護理值班</div>
+          <div class="pricing-feature"><span class="feature-x">✗</span>個別復健治療</div>
+          <div class="pricing-feature"><span class="feature-x">✗</span>失智專區入住</div>
+        </div>
+        <a href="booking.html" class="btn btn-secondary" style="width:100%;justify-content:center;">預約評估</a>
+      </div>
+
+      <!-- Featured -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">最受歡迎</div>
+        <div class="pricing-tier">Standard Plan · 標準方案</div>
+        <div class="pricing-name">全護照護</div>
+        <div class="pricing-desc">我們最受歡迎的方案，提供全面的照護服務，適合中度照護需求的長輩。</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">NT$</span>
+          <span class="pricing-amount">58,000</span>
+        </div>
+        <div class="pricing-period">每月起 / Month (未含長照補助)</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><span class="feature-check">✓</span>單人雙人房可選</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>每日三餐 + 點心</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>全程生活照護</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>每日健康監測</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>個別 + 團體活動</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>24 小時護理值班</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>每週 3 次復健</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>家屬 APP 即時更新</div>
+        </div>
+        <a href="booking.html" class="btn btn-gold" style="width:100%;justify-content:center;">預約評估</a>
+      </div>
+
+      <!-- Premium -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Premium Plan · 尊榮方案</div>
+        <div class="pricing-name">尊榮照護</div>
+        <div class="pricing-desc">頂級個人化照護體驗，豪華套房，一對一照護，適合高度照護需求或特殊醫療需求的長輩。</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">NT$</span>
+          <span class="pricing-amount">85,000</span>
+        </div>
+        <div class="pricing-period">每月起 / Month (未含長照補助)</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><span class="feature-check">✓</span>豪華套房（獨立衛浴）</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>客製化菜單</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>一對一專屬照護員</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>AI 智慧健康監測</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>無限次個別活動</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>24 小時醫師諮詢</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>每日個別復健</div>
+          <div class="pricing-feature"><span class="feature-check">✓</span>VIP 家屬接待室</div>
+        </div>
+        <a href="booking.html" class="btn btn-primary" style="width:100%;justify-content:center;">預約評估</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Table -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-label">Compare · 方案比較</span>
+      <h2 class="section-title">詳細<span>功能比較</span></h2>
+    </div>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>服務項目</th>
+            <th>輕度照護</th>
+            <th class="featured-header">全護照護 ⭐</th>
+            <th>尊榮照護</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>居室類型</td><td>單人標準房</td><td class="featured-col">單/雙人房</td><td>豪華套房</td></tr>
+          <tr><td>每日三餐</td><td class="check-td">✓</td><td class="featured-col check-td">✓</td><td class="check-td">✓ 客製化</td></tr>
+          <tr><td>基本生活照護</td><td class="check-td">✓</td><td class="featured-col check-td">✓</td><td class="check-td">✓ 一對一</td></tr>
+          <tr><td>24H 護理值班</td><td class="check-td">✓</td><td class="featured-col check-td">✓</td><td class="check-td">✓ 醫師</td></tr>
+          <tr><td>團體活動課程</td><td class="check-td">✓</td><td class="featured-col check-td">✓</td><td class="check-td">✓</td></tr>
+          <tr><td>個別活動課程</td><td class="cross-td">✗</td><td class="featured-col check-td">✓ 每週3次</td><td class="check-td">✓ 每日</td></tr>
+          <tr><td>物理復健治療</td><td class="cross-td">✗</td><td class="featured-col check-td">✓ 每週3次</td><td class="check-td">✓ 每日</td></tr>
+          <tr><td>職能復健治療</td><td class="cross-td">✗</td><td class="featured-col check-td">✓ 每週2次</td><td class="check-td">✓ 每日</td></tr>
+          <tr><td>家屬APP即時更新</td><td class="cross-td">✗</td><td class="featured-col check-td">✓</td><td class="check-td">✓ VIP版</td></tr>
+          <tr><td>月度家庭會議</td><td class="check-td">✓</td><td class="featured-col check-td">✓ 雙週</td><td class="check-td">✓ 每週</td></tr>
+          <tr><td>AI健康監測床墊</td><td class="cross-td">✗</td><td class="featured-col cross-td">✗</td><td class="check-td">✓</td></tr>
+          <tr><td>VIP家屬接待室</td><td class="cross-td">✗</td><td class="featured-col cross-td">✗</td><td class="check-td">✓</td></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>月費（未含補助）</td>
+            <td>NT$ 42,000+</td>
+            <td class="featured-col">NT$ 58,000+</td>
+            <td>NT$ 85,000+</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Add-ons -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Add-ons · 加購服務</span>
+      <h2 class="section-title">彈性<span>加購項目</span></h2>
+      <p class="section-subtitle">依個別需求彈性加購，量身打造最適合的照護組合。</p>
+    </div>
+    <div class="add-on-grid reveal">
+      <div class="add-on-card">
+        <div class="add-on-icon">🚗</div>
+        <div>
+          <div class="add-on-name">就醫接送服務</div>
+          <div class="add-on-desc">專車接送外出就醫，全程專人陪同。</div>
+          <div class="add-on-price">NT$ 800 / 次</div>
+        </div>
+      </div>
+      <div class="add-on-card">
+        <div class="add-on-icon">💆</div>
+        <div>
+          <div class="add-on-name">芳香按摩療程</div>
+          <div class="add-on-desc">專業芳療師提供舒壓按摩，促進循環。</div>
+          <div class="add-on-price">NT$ 1,200 / 次</div>
+        </div>
+      </div>
+      <div class="add-on-card">
+        <div class="add-on-icon">✂️</div>
+        <div>
+          <div class="add-on-name">到府美髮服務</div>
+          <div class="add-on-desc">專業美髮師到房間提供洗髮剪髮服務。</div>
+          <div class="add-on-price">NT$ 500 / 次</div>
+        </div>
+      </div>
+      <div class="add-on-card">
+        <div class="add-on-icon">📸</div>
+        <div>
+          <div class="add-on-name">生日紀念攝影</div>
+          <div class="add-on-desc">專業攝影師記錄長輩生日珍貴時刻。</div>
+          <div class="add-on-price">NT$ 2,500 / 次</div>
+        </div>
+      </div>
+      <div class="add-on-card">
+        <div class="add-on-icon">🌸</div>
+        <div>
+          <div class="add-on-name">個人空間佈置</div>
+          <div class="add-on-desc">協助客製化居室佈置，打造家的感覺。</div>
+          <div class="add-on-price">NT$ 3,000 起</div>
+        </div>
+      </div>
+      <div class="add-on-card">
+        <div class="add-on-icon">📱</div>
+        <div>
+          <div class="add-on-name">視訊探親設置</div>
+          <div class="add-on-desc">設置平板及協助與海外家屬視訊連線。</div>
+          <div class="add-on-price">NT$ 200 / 次</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Government Subsidies -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-label">Subsidies · 政府補助</span>
+      <h2 class="section-title">善用<span>政府資源</span>，減輕負擔</h2>
+      <p class="section-subtitle">我們的專業社工將協助您申請各項政府補助，最高可補助月費的 80%。</p>
+    </div>
+    <div class="subsidy-grid reveal">
+      <div class="subsidy-card">
+        <div class="subsidy-icon">🏛️</div>
+        <div class="subsidy-name">長期照顧給付</div>
+        <div class="subsidy-desc">衛生福利部「長照 2.0」計畫提供住宿式機構給付，依失能等級每月補助 NT$ 15,000–45,000。需先完成長照需求評估（CMS 評估），取得失能等級認定。</div>
+        <div class="subsidy-link">→ 我們協助申辦 · 免費服務</div>
+      </div>
+      <div class="subsidy-card">
+        <div class="subsidy-icon">💰</div>
+        <div class="subsidy-name">中低收入老人補助</div>
+        <div class="subsidy-desc">符合資格的中低收入戶長輩，可申請社會局機構安置補助，每月最高補助 NT$ 30,000，視各縣市規定有所不同。</div>
+        <div class="subsidy-link">→ 資格審查免費諮詢</div>
+      </div>
+      <div class="subsidy-card">
+        <div class="subsidy-icon">🎖️</div>
+        <div class="subsidy-name">榮民照護補助</div>
+        <div class="subsidy-desc">退輔會對符合資格的榮民及其配偶，提供機構安養補助，免費申辦各項相關福利。</div>
+        <div class="subsidy-link">→ 退輔會認可合作機構</div>
+      </div>
+      <div class="subsidy-card">
+        <div class="subsidy-icon">❤️</div>
+        <div class="subsidy-name">社福機構減免</div>
+        <div class="subsidy-desc">松齡設有自辦社會福利減免方案，針對特殊困難家庭提供一定比例的費用減免，以確保照護可近性。</div>
+        <div class="subsidy-link">→ 聯絡社工了解詳情</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-label">FAQ · 常見問題</span>
+      <h2 class="section-title">收費<span>常見問題</span></h2>
+    </div>
+    <div style="max-width:720px;margin:0 auto;">
+      <div class="faq-item reveal">
+        <div class="faq-question">入住需要繳交押金嗎？<div class="faq-icon">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">入住時需繳交一個月費用作為押金，離院時於結清費用後全額退還（不計息）。押金金額依選擇方案不同而有所差異。</div></div>
+      </div>
+      <div class="faq-item reveal delay-1">
+        <div class="faq-question">費用包含哪些項目？<div class="faq-icon">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">月費包含：住宿費、三餐及下午茶、基本生活照護、團體活動課程、定期健康監測、24 小時護理服務。不含：個人用品（紙尿褲、盥洗用品等）、外出就醫費用、加購服務項目。</div></div>
+      </div>
+      <div class="faq-item reveal delay-2">
+        <div class="faq-question">可以試住嗎？<div class="faq-icon">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">我們提供 7 天試住服務，讓長輩和家屬在正式入住前充分體驗松齡的照護品質與生活環境。試住費用依所選方案日費計算，試住後若決定正式入住，試住費用可折抵入住月費。</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">費用是否每年調漲？<div class="faq-icon">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">我們承諾費用調整不超過消費者物價指數（CPI）漲幅，且會在調漲前 3 個月以書面通知家屬。近五年平均每年調漲幅度約 2–3%。</div></div>
+      </div>
+      <div class="faq-item reveal delay-1">
+        <div class="faq-question">如果照護需求改變，費用會如何調整？<div class="faq-icon">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">每半年進行一次照護需求評估，如評估結果顯示照護等級有所變化，我們會與家屬充分溝通，並依新的照護需求等級調整方案與費用，確保長輩獲得最適切的照護。</div></div>
+      </div>
+      <div class="faq-item reveal delay-2">
+        <div class="faq-question">臨時住宿或短期喘息服務如何計費？<div class="faq-icon">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">短期住宿（喘息服務）以日計費，日費為月費的 1/28。長照 2.0 補助計畫中包含喘息服務給付，可使用補助點數抵扣費用，歡迎洽詢社工了解詳情。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container" style="position:relative;z-index:1;">
+    <h2>不確定哪個方案最適合？讓我們幫您評估</h2>
+    <p>預約免費照護需求評估，專業顧問將為您量身推薦最合適且最划算的照護方案。</p>
+    <div class="cta-buttons">
+      <a href="booking.html" class="btn btn-white btn-lg">預約免費評估</a>
+      <a href="contact.html" class="btn btn-secondary btn-lg" style="border-color:rgba(255,255,255,.5);color:#fff;">諮詢補助資格</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:16px;">
+          <div class="nav-logo-icon">🌲</div>
+          <div class="nav-logo-text">
+            <div class="nav-logo-zh">松齡養老之家</div>
+            <div class="nav-logo-en">Pine Age Care Home</div>
+          </div>
+        </div>
+        <p class="footer-desc">用愛與專業守護每一位長輩的晚年，讓每個家庭都能安心。</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">📘</a><a href="#" class="social-btn">💬</a>
+          <a href="#" class="social-btn">▶️</a><a href="#" class="social-btn">📸</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>快速連結</h4>
+        <div class="footer-links">
+          <a href="about.html"      class="footer-link">→ 關於我們</a>
+          <a href="services.html"   class="footer-link">→ 服務介紹</a>
+          <a href="facilities.html" class="footer-link">→ 設施環境</a>
+          <a href="pricing.html"    class="footer-link">→ 收費方案</a>
+          <a href="booking.html"    class="footer-link">→ 線上預約</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>收費相關</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link">→ 方案比較</a>
+          <a href="#" class="footer-link">→ 加購服務</a>
+          <a href="#" class="footer-link">→ 政府補助</a>
+          <a href="#" class="footer-link">→ 常見問題</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>聯絡資訊</h4>
+        <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><span>台北市信義區松仁路 100 號</span></div>
+        <div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>(02) 2345-6789</span></div>
+        <div class="footer-contact-item"><span class="footer-contact-icon">📧</span><span>care@pineage.com.tw</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 松齡養老之家 · 版權所有</div>
+      <div class="footer-legal"><a href="#">隱私政策</a><a href="#">使用條款</a></div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop">↑</button>
+<div class="toast" id="toast"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

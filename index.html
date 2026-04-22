@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>松齡養老之家 | Pine Age Care Home</title>
+  <meta name="description" content="松齡養老之家提供溫馨、專業的全方位照護服務，讓您的摯愛享有尊嚴、舒適的晚年生活。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== Hero ===== */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(150deg,
+        #1a120a 0%,
+        #2D2010 30%,
+        #4F3520 60%,
+        #3A5C40 100%);
+    }
+
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse at 30% 50%, rgba(200,112,58,.2) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(79,126,95,.15) 0%, transparent 50%);
+    }
+
+    .hero-dots {
+      position: absolute;
+      inset: 0;
+      opacity: .04;
+      background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+      background-size: 28px 28px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 140px 0 80px;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,112,58,.15);
+      border: 1px solid rgba(200,112,58,.35);
+      backdrop-filter: blur(8px);
+      padding: 8px 18px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary-light); animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    .hero-badge-text { font-size: .8rem; font-weight: 600; color: var(--primary-light); letter-spacing: .06em; }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .hero-title-en {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      color: rgba(255,255,255,.45);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.7);
+      line-height: 1.8;
+      margin-bottom: 48px;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+
+    .hero-trust {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      color: rgba(255,255,255,.6);
+    }
+
+    .hero-trust-icon { font-size: 1rem; }
+
+    .hero-float {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 2;
+    }
+
+    @media (max-width: 1024px) { .hero-float { display: none; } }
+
+    .float-card {
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      color: #fff;
+      width: 260px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .float-card:nth-child(2) { animation-delay: -2s; width: 220px; }
+    .float-card:nth-child(3) { animation-delay: -4s; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+
+    .float-card-label { font-size: .7rem; color: rgba(255,255,255,.55); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+    .float-card-value { font-size: 1.5rem; font-weight: 700; font-family: 'Noto Serif TC',serif; }
+    .float-card-sub   { font-size: .75rem; color: rgba(255,255,255,.6); margin-top: 4px; }
+
+    .float-card-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .float-card-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; background: rgba(255,255,255,.1); flex-shrink: 0; }
+    .float-card-info   { font-size: .82rem; }
+    .float-card-name   { font-weight: 600; }
+    .float-card-time   { color: rgba(255,255,255,.5); font-size: .72rem; }
+
+    /* ===== Features ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 1000px) { .features-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 500px)  { .features-grid { grid-template-columns: 1fr; } }
+
+    .feature-card {
+      padding: 36px 28px;
+    }
+
+    .feature-card .card-icon { margin-bottom: 20px; }
+    .feature-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+    .feature-card p  { font-size: .88rem; color: var(--text-light); line-height: 1.7; }
+
+    /* ===== Services Preview ===== */
+    .service-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .service-preview-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 550px) { .service-preview-grid { grid-template-columns: 1fr; } }
+
+    .service-preview-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      min-height: 280px;
+      display: flex;
+      align-items: flex-end;
+      padding: 28px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .service-preview-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+    .service-preview-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(45,36,24,.85) 0%, rgba(45,36,24,.2) 60%, transparent 100%);
+      z-index: 1;
+    }
+
+    .service-card-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      transition: transform .5s ease;
+    }
+
+    .service-preview-card:hover .service-card-bg { transform: scale(1.05); }
+
+    .service-preview-content { position: relative; z-index: 2; }
+    .service-preview-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .service-preview-name { font-size: 1.1rem; font-weight: 700; color: #fff; font-family: 'Noto Serif TC',serif; margin-bottom: 4px; }
+    .service-preview-en   { font-size: .75rem; color: rgba(255,255,255,.55); margin-bottom: 10px; }
+    .service-preview-desc { font-size: .82rem; color: rgba(255,255,255,.75); line-height: 1.6; }
+
+    /* Card bg colors */
+    .sp-bg-1 { background: linear-gradient(135deg,#3A1A10,#6E3A20); }
+    .sp-bg-2 { background: linear-gradient(135deg,#1A3A1A,#2E6E3A); }
+    .sp-bg-3 { background: linear-gradient(135deg,#1A1A3A,#2E3A6E); }
+    .sp-bg-4 { background: linear-gradient(135deg,#3A1A3A,#6E2E6E); }
+    .sp-bg-5 { background: linear-gradient(135deg,#3A3A1A,#6E6E2E); }
+    .sp-bg-6 { background: linear-gradient(135deg,#1A3A3A,#2E6E6E); }
+
+    /* ===== About Preview ===== */
+    .about-visual {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      height: 500px;
+    }
+
+    .about-img {
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      overflow: hidden;
+    }
+
+    .about-img-1 { background: linear-gradient(135deg,#3A1A10,#5C3A20); grid-row: span 2; }
+    .about-img-2 { background: linear-gradient(135deg,#1A3A1A,#2E5A3A); }
+    .about-img-3 { background: linear-gradient(135deg,#1A1A3A,#2E3A5A); }
+
+    .about-badge {
+      position: absolute;
+      bottom: -16px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      white-space: nowrap;
+    }
+
+    .about-badge-num  { font-family: 'Noto Serif TC',serif; font-size: 2rem; font-weight: 700; }
+    .about-badge-text { font-size: .78rem; opacity: .85; }
+
+    .about-text-content { padding-left: 32px; }
+    @media (max-width: 800px) { .about-text-content { padding-left: 0; } }
+
+    .check-list { margin: 24px 0 32px; display: flex; flex-direction: column; gap: 12px; }
+    .check-item { display: flex; align-items: flex-start; gap: 12px; font-size: .92rem; color: var(--text-medium); }
+    .check-mark { color: var(--secondary); font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ===== News ===== */
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 900px) { .news-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 550px) { .news-grid { grid-template-columns: 1fr; } }
+
+    /* ===== Testimonials ===== */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 550px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    /* ===== Partners ===== */
+    .partners-strip {
+      background: var(--bg-white);
+      padding: 48px 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .partners-label {
+      text-align: center;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+
+    .partners-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .partner-logo {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--text-light);
+      opacity: .6;
+      letter-spacing: .05em;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .partner-logo:hover { opacity: 1; color: var(--text-dark); }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar transparent" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">🌲</div>
+      <div class="nav-logo-text">
+        <div class="nav-logo-zh">松齡養老之家</div>
+        <div class="nav-logo-en">Pine Age Care Home</div>
+      </div>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html"      class="nav-link active">首頁</a>
+      <a href="about.html"      class="nav-link">關於我們</a>
+      <a href="services.html"   class="nav-link">服務介紹</a>
+      <a href="facilities.html" class="nav-link">設施環境</a>
+      <a href="pricing.html"    class="nav-link">收費方案</a>
+      <a href="contact.html"    class="nav-link">聯絡我們</a>
+      <a href="booking.html"    class="nav-link nav-cta">立即預約</a>
+    </div>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="選單">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-section">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-dots"></div>
+
+  <div class="container">
+    <div class="hero-content animate-fade-up">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span class="hero-badge-text">已服務逾 18 年 · Serving Families Since 2006</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-title-en">A Place to Call Home</span>
+        讓每一個晚年<br>都充滿溫暖與尊嚴
+      </h1>
+
+      <p class="hero-subtitle">
+        松齡養老之家提供全方位的專業照護，從日常生活協助到專業醫療復健，我們用心守護您最珍愛的家人。
+      </p>
+
+      <div class="hero-actions">
+        <a href="booking.html" class="btn btn-primary btn-lg">立即預約參觀</a>
+        <a href="services.html" class="btn btn-secondary btn-lg" style="border-color:rgba(255,255,255,.4);color:#fff;">了解服務內容</a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="hero-trust-item"><span class="hero-trust-icon">🏅</span>衛生福利部認證機構</div>
+        <div class="hero-trust-item"><span class="hero-trust-icon">⭐</span>全國評鑑甲等</div>
+        <div class="hero-trust-item"><span class="hero-trust-icon">🛡️</span>24 小時專業照護</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Cards -->
+  <div class="hero-float">
+    <div class="float-card animate-fade-up delay-2">
+      <div class="float-card-label">今日入住率</div>
+      <div class="float-card-value">96.8%</div>
+      <div class="float-card-sub">Occupancy Rate</div>
+    </div>
+
+    <div class="float-card animate-fade-up delay-3">
+      <div class="float-card-label">最新入住 · Recent Resident</div>
+      <div class="float-card-row">
+        <div class="float-card-avatar">👴</div>
+        <div class="float-card-info">
+          <div class="float-card-name">王伯伯</div>
+          <div class="float-card-time">2 小時前入住</div>
+        </div>
+      </div>
+      <div class="float-card-row">
+        <div class="float-card-avatar">👵</div>
+        <div class="float-card-info">
+          <div class="float-card-name">陳奶奶</div>
+          <div class="float-card-time">昨日入住</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="float-card animate-fade-up delay-4">
+      <div class="float-card-label">家屬滿意度</div>
+      <div class="float-card-value">4.9 ⭐</div>
+      <div class="float-card-sub">Family Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number"><span data-count="18">0</span><sup>年</sup></div>
+        <div class="stat-label">Years of Excellence · 服務年資</div>
+      </div>
+      <div class="stat-item reveal delay-1">
+        <div class="stat-number"><span data-count="320">0</span><sup>+</sup></div>
+        <div class="stat-label">Residents Served · 照護長輩</div>
+      </div>
+      <div class="stat-item reveal delay-2">
+        <div class="stat-number"><span data-count="85">0</span><sup>名</sup></div>
+        <div class="stat-label">Professional Staff · 專業人員</div>
+      </div>
+      <div class="stat-item reveal delay-3">
+        <div class="stat-number"><span data-count="4.9">0</span><sup>⭐</sup></div>
+        <div class="stat-label">Average Rating · 平均評分</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Features -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-label">Why Choose Us · 選擇我們的理由</span>
+      <h2 class="section-title">以<span>專業</span>與<span>愛心</span>守護每一位長輩</h2>
+      <p class="section-subtitle">我們相信每位長輩都值得擁有有尊嚴、充滿溫暖的晚年，這是我們 18 年來不變的承諾。</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="card feature-card reveal">
+        <div class="card-icon orange">👨‍⚕️</div>
+        <h3>專業醫護團隊</h3>
+        <p>資深護理師、職能治療師、物理治療師 24 小時輪班守護，提供最即時的醫療支援。</p>
+      </div>
+      <div class="card feature-card reveal delay-1">
+        <div class="card-icon green">🏡</div>
+        <h3>家庭式溫馨環境</h3>
+        <p>精心設計的居住空間，融入家庭氛圍，讓長輩在熟悉的感受中安心生活。</p>
+      </div>
+      <div class="card feature-card reveal delay-2">
+        <div class="card-icon gold">🍽️</div>
+        <h3>專業營養膳食</h3>
+        <p>持照營養師量身規劃，提供符合個別健康需求的美味餐點，均衡又可口。</p>
+      </div>
+      <div class="card feature-card reveal delay-3">
+        <div class="card-icon blue">📱</div>
+        <h3>家屬線上關懷</h3>
+        <p>透過 APP 即時掌握長輩動態、健康紀錄與活動照片，讓您放心安心。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Preview -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Our Services · 服務項目</span>
+      <h2 class="section-title">全方位的<span>照護服務</span></h2>
+      <p class="section-subtitle">根據每位長輩的身體狀況與需求，提供最適切的個人化照護方案。</p>
+    </div>
+
+    <div class="service-preview-grid">
+      <div class="service-preview-card sp-bg-1 reveal">
+        <div class="service-card-bg">🏥</div>
+        <div class="service-preview-content">
+          <div class="service-preview-icon">❤️‍🩹</div>
+          <div class="service-preview-name">生活照護</div>
+          <div class="service-preview-en">Daily Living Care</div>
+          <div class="service-preview-desc">協助日常盥洗、飲食、移位，24 小時貼心照料。</div>
+        </div>
+      </div>
+      <div class="service-preview-card sp-bg-2 reveal delay-1">
+        <div class="service-card-bg">🌿</div>
+        <div class="service-preview-content">
+          <div class="service-preview-icon">🦽</div>
+          <div class="service-preview-name">復健治療</div>
+          <div class="service-preview-en">Rehabilitation</div>
+          <div class="service-preview-desc">物理、職能、語言治療一應俱全，協助功能恢復。</div>
+        </div>
+      </div>
+      <div class="service-preview-card sp-bg-3 reveal delay-2">
+        <div class="service-card-bg">🧠</div>
+        <div class="service-preview-content">
+          <div class="service-preview-icon">💭</div>
+          <div class="service-preview-name">失智照護</div>
+          <div class="service-preview-en">Dementia Care</div>
+          <div class="service-preview-desc">專業失智症照護環境，維護認知功能與生活品質。</div>
+        </div>
+      </div>
+      <div class="service-preview-card sp-bg-4 reveal">
+        <div class="service-card-bg">🌸</div>
+        <div class="service-preview-content">
+          <div class="service-preview-icon">🕊️</div>
+          <div class="service-preview-name">安寧照護</div>
+          <div class="service-preview-en">Palliative Care</div>
+          <div class="service-preview-desc">以人為本的安寧服務，陪伴長輩安詳走過生命尾聲。</div>
+        </div>
+      </div>
+      <div class="service-preview-card sp-bg-5 reveal delay-1">
+        <div class="service-card-bg">☀️</div>
+        <div class="service-preview-content">
+          <div class="service-preview-icon">🎭</div>
+          <div class="service-preview-name">活動療癒</div>
+          <div class="service-preview-en">Activity Therapy</div>
+          <div class="service-preview-desc">園藝、音樂、藝術等多元活動，豐富晚年生活。</div>
+        </div>
+      </div>
+      <div class="service-preview-card sp-bg-6 reveal delay-2">
+        <div class="service-card-bg">👨‍👩‍👧</div>
+        <div class="service-preview-content">
+          <div class="service-preview-icon">💬</div>
+          <div class="service-preview-name">家屬支援</div>
+          <div class="service-preview-en">Family Support</div>
+          <div class="service-preview-desc">定期家庭會議、照護諮詢，與家屬攜手同行。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:40px;">
+      <a href="services.html" class="btn btn-secondary">查看所有服務 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Preview -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="grid-2">
+      <div class="reveal">
+        <div class="about-visual">
+          <div class="about-img about-img-1">🏡</div>
+          <div class="about-img about-img-2">🌸</div>
+          <div class="about-img about-img-3">👨‍⚕️</div>
+          <div class="about-badge">
+            <div class="about-badge-num">18</div>
+            <div class="about-badge-text">年專業照護經驗</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text-content reveal delay-2">
+        <span class="section-label">About Us · 關於我們</span>
+        <h2 class="section-title">用愛守護，以<span>專業</span>相伴</h2>
+        <p style="color:var(--text-medium);line-height:1.8;margin-bottom:16px;">
+          松齡養老之家創立於 2006 年，由一群懷抱使命的醫護專業人士共同創辦。我們深信，每一位長輩都值得在充滿尊嚴與關愛的環境中安享晚年。
+        </p>
+        <p style="color:var(--text-medium);line-height:1.8;">
+          18 年來，我們持續精進照護品質，榮獲衛生福利部評鑑甲等，並多次獲得最佳養老機構殊榮。
+        </p>
+
+        <div class="check-list">
+          <div class="check-item"><span class="check-mark">✔</span>衛生福利部合法立案，通過國家評鑑甲等</div>
+          <div class="check-item"><span class="check-mark">✔</span>護理師與住民比 1:5，超越法定標準</div>
+          <div class="check-item"><span class="check-mark">✔</span>持續教育訓練，定期接受專業認證</div>
+          <div class="check-item"><span class="check-mark">✔</span>全館無障礙環境，安全第一</div>
+        </div>
+
+        <a href="about.html" class="btn btn-primary">了解更多故事</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-label">Testimonials · 家屬心聲</span>
+      <h2 class="section-title">他們的<span>信任</span>是我們最大的動力</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">「父親入住松齡已滿三年，從剛開始的不適應，到現在每天笑口常開、參加各種活動，這一切都要感謝這裡每一位細心的照護人員。」</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👩</div>
+          <div>
+            <div class="testimonial-name">李心怡 女士</div>
+            <div class="testimonial-role">住民家屬 · 台北市</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">「媽媽有輕度失智症，在松齡的專業失智照護單元中得到妥善照顧。每次探視都看到她在做手工藝、唱老歌，心裡踏實許多。」</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👨</div>
+          <div>
+            <div class="testimonial-name">張建國 先生</div>
+            <div class="testimonial-role">住民家屬 · 新北市</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">「照護阿嬷的護理師不只專業，更像家人一樣貼心。手機 APP 可以隨時看到她的狀況，身在國外的我終於可以放心了。」</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👩</div>
+          <div>
+            <div class="testimonial-name">陳美玲 小姐</div>
+            <div class="testimonial-role">住民家屬 · 旅居美國</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners -->
+<div class="partners-strip">
+  <div class="container">
+    <p class="partners-label">認證與合作夥伴 · Certifications & Partners</p>
+    <div class="partners-logos">
+      <div class="partner-logo">🏛️ 衛生福利部</div>
+      <div class="partner-logo">🏥 臺大醫院</div>
+      <div class="partner-logo">🩺 中華民國護理學會</div>
+      <div class="partner-logo">🌿 台灣老人福利機構協會</div>
+      <div class="partner-logo">🎖️ ISO 9001 認證</div>
+    </div>
+  </div>
+</div>
+
+<!-- News -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Latest News · 最新消息</span>
+      <h2 class="section-title">機構<span>動態</span></h2>
+    </div>
+
+    <div class="news-grid">
+      <div class="card news-card reveal">
+        <div class="news-thumb">
+          <div class="news-thumb-inner" style="background:linear-gradient(135deg,#3A1A10,#6E3A20);">🌸</div>
+        </div>
+        <div class="news-body">
+          <div class="news-date">2026 年 4 月 15 日</div>
+          <h3 class="news-title">2026 年春季健康檢查活動圓滿結束</h3>
+          <p class="news-excerpt">本次健康檢查涵蓋心肺功能、骨密度等多項指標，全體住民均參與完畢，結果良好。</p>
+        </div>
+      </div>
+
+      <div class="card news-card reveal delay-1">
+        <div class="news-thumb">
+          <div class="news-thumb-inner" style="background:linear-gradient(135deg,#1A3A1A,#2E6E3A);">🎨</div>
+        </div>
+        <div class="news-body">
+          <div class="news-date">2026 年 4 月 8 日</div>
+          <h3 class="news-title">書法班作品展開幕，長輩揮毫令人感動</h3>
+          <p class="news-excerpt">歷經三個月的書法課程，住民們的精彩作品首次公開展出，獲得家屬熱烈迴響。</p>
+        </div>
+      </div>
+
+      <div class="card news-card reveal delay-2">
+        <div class="news-thumb">
+          <div class="news-thumb-inner" style="background:linear-gradient(135deg,#1A1A3A,#2E3A6E);">🏋️</div>
+        </div>
+        <div class="news-body">
+          <div class="news-date">2026 年 3 月 28 日</div>
+          <h3 class="news-title">全新復健設備啟用，提升治療品質</h3>
+          <p class="news-excerpt">引進最新型態的物理治療設備，將大幅提升住民的復健效果與治療舒適度。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container" style="position:relative;z-index:1;">
+    <h2>讓我們攜手，為您的家人找到最溫暖的家</h2>
+    <p>立即預約參觀，親身感受松齡的溫馨氛圍，<br>讓專業顧問為您量身規劃最適合的照護方案。</p>
+    <div class="cta-buttons">
+      <a href="booking.html" class="btn btn-white btn-lg">立即預約參觀</a>
+      <a href="contact.html" class="btn btn-secondary btn-lg" style="border-color:rgba(255,255,255,.5);color:#fff;">聯絡我們</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:16px;">
+          <div class="nav-logo-icon">🌲</div>
+          <div class="nav-logo-text">
+            <div class="nav-logo-zh">松齡養老之家</div>
+            <div class="nav-logo-en">Pine Age Care Home</div>
+          </div>
+        </div>
+        <p class="footer-desc">用愛與專業守護每一位長輩的晚年，讓每個家庭都能安心。成立於 2006 年，服務超過 18 年。</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" title="Facebook">📘</a>
+          <a href="#" class="social-btn" title="Line">💬</a>
+          <a href="#" class="social-btn" title="YouTube">▶️</a>
+          <a href="#" class="social-btn" title="Instagram">📸</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>快速連結</h4>
+        <div class="footer-links">
+          <a href="about.html"      class="footer-link">→ 關於我們</a>
+          <a href="services.html"   class="footer-link">→ 服務介紹</a>
+          <a href="facilities.html" class="footer-link">→ 設施環境</a>
+          <a href="pricing.html"    class="footer-link">→ 收費方案</a>
+          <a href="booking.html"    class="footer-link">→ 線上預約</a>
+          <a href="contact.html"    class="footer-link">→ 聯絡我們</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>服務項目</h4>
+        <div class="footer-links">
+          <a href="services.html" class="footer-link">→ 生活照護</a>
+          <a href="services.html" class="footer-link">→ 復健治療</a>
+          <a href="services.html" class="footer-link">→ 失智照護</a>
+          <a href="services.html" class="footer-link">→ 安寧照護</a>
+          <a href="services.html" class="footer-link">→ 活動療癒</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>聯絡資訊</h4>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📍</span>
+          <span>台北市信義區松仁路 100 號</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📞</span>
+          <span>(02) 2345-6789</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📧</span>
+          <span>care@pineage.com.tw</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">🕐</span>
+          <span>探視時間：每日 9:00–17:00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 松齡養老之家 Pine Age Care Home · 版權所有</div>
+      <div class="footer-legal">
+        <a href="#">隱私政策</a>
+        <a href="#">使用條款</a>
+        <a href="#">無障礙聲明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="回到頂部">↑</button>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
