@@ -2,6 +2,7 @@
    全局樣式 / Global Styles
    ============================================= */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 
 :root {
   --primary:        #C8703A;
@@ -99,6 +100,12 @@ h1,h2,h3,h4,h5 {
 }
 
 .navbar.transparent { background: transparent; }
+
+/* Logo 在透明 navbar 時顯示白色 */
+.navbar.transparent .nav-logo-zh { color: #fff; }
+.navbar.transparent .nav-logo-en { color: rgba(255,255,255,.65); }
+.navbar.transparent .nav-link     { color: rgba(255,255,255,.85); }
+.navbar.transparent .nav-link:hover { color: #fff; background: rgba(255,255,255,.1); }
 .navbar.scrolled {
   background: rgba(255,249,244,.97);
   backdrop-filter: blur(12px);
