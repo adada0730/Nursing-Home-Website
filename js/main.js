@@ -77,17 +77,33 @@ document.querySelectorAll('.faq-question').forEach(question => {
 const lightbox     = document.getElementById('lightbox');
 const lightboxImg  = document.getElementById('lightboxImg');
 const lightboxCap  = document.getElementById('lightboxCaption');
-const galleryItems = Array.from(document.querySelectorAll('.gallery-item[data-src]'));
+// Support both data-src and inner <img> formats
+const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
 let currentIndex   = 0;
+
+function getItemSrc(item) {
+  if (item.dataset.src && item.dataset.src !== '') return item.dataset.src;
+  const img = item.querySelector('img.gallery-thumb');
+  if (img) return img.src.replace(/w=\d+&h=\d+/, 'w=1200&h=900');
+  return '';
+}
 
 function openLightbox(index) {
   currentIndex = index;
   const item = galleryItems[index];
   if (!item || !lightbox) return;
-  lightboxImg.src = item.dataset.src;
+  const src = getItemSrc(item);
+  if (!src) return;
+  lightboxImg.src = src;
   if (lightboxCap) lightboxCap.textContent = item.dataset.caption || '';
   lightbox.classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+// Called from inline onclick="openGalleryItem(this)" in HTML
+function openGalleryItem(el) {
+  const idx = galleryItems.indexOf(el);
+  if (idx !== -1) openLightbox(idx);
 }
 
 function closeLightbox() {

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>設施環境 | 慈恩護理之家</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     /* Gallery layout */
     .gallery-masonry {
@@ -157,7 +158,7 @@
 </nav>
 
 <section class="page-hero">
-  <div class="page-hero-bg"></div>
+  <div class="page-hero-bg" style="background-image:linear-gradient(135deg,rgba(45,36,24,.88) 0%,rgba(92,58,32,.75) 50%,rgba(79,126,95,.68) 100%),url('https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&w=1600&h=600&q=80');background-size:cover;background-position:center;"></div>
   <div class="page-hero-pattern"></div>
   <div class="page-hero-overlay"></div>
   <div class="container page-hero-content">
@@ -291,8 +292,8 @@
     </div>
     <div class="rooms-grid">
       <div class="room-card reveal">
-        <div class="room-thumb" style="background:linear-gradient(135deg,#3A1A10,#5C3A20);">
-          🛏️
+        <div class="room-thumb" style="background:#2D2418;overflow:hidden;padding:0;position:relative;">
+          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&h=280&q=80" alt="單人標準房" style="width:100%;height:100%;object-fit:cover;opacity:0.85;transition:transform .5s ease;">
           <span class="room-badge">標準型</span>
         </div>
         <div class="room-body">
@@ -308,8 +309,8 @@
         </div>
       </div>
       <div class="room-card reveal delay-1">
-        <div class="room-thumb" style="background:linear-gradient(135deg,#1A3A1A,#2E5A3A);">
-          🛏️🛏️
+        <div class="room-thumb" style="background:#2D2418;overflow:hidden;padding:0;position:relative;">
+          <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?auto=format&fit=crop&w=600&h=280&q=80" alt="雙人溫馨房" style="width:100%;height:100%;object-fit:cover;opacity:0.85;transition:transform .5s ease;">
           <span class="room-badge">雙人型</span>
         </div>
         <div class="room-body">
@@ -325,8 +326,8 @@
         </div>
       </div>
       <div class="room-card reveal delay-2">
-        <div class="room-thumb" style="background:linear-gradient(135deg,#2C4A6E,#1a2a4a);">
-          🏡
+        <div class="room-thumb" style="background:#2D2418;overflow:hidden;padding:0;position:relative;">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&h=280&q=80" alt="豪華套房" style="width:100%;height:100%;object-fit:cover;opacity:0.85;transition:transform .5s ease;">
           <span class="room-badge" style="background:var(--gold);">套房型</span>
         </div>
         <div class="room-body">
@@ -363,92 +364,80 @@
 
     <div class="gallery-masonry" id="galleryGrid">
       <!-- Living -->
-      <div class="gallery-item" data-src="" data-caption="溫馨大廳接待區" data-filter="living"
-           style="height:240px;background:linear-gradient(135deg,#2C4A6E,#1a3a5a);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">🏛️</div>
+      <div class="gallery-item" data-caption="溫馨大廳接待區" data-filter="living"
+           style="height:240px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&w=600&h=400&q=80" alt="溫馨大廳接待區">
         <div class="gallery-overlay"><div class="gallery-caption">溫馨大廳接待區</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
-      <div class="gallery-item" data-src="" data-caption="舒適單人居室" data-filter="living"
-           style="height:180px;background:linear-gradient(135deg,#5C3A20,#3a2010);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">🛏️</div>
+      <div class="gallery-item" data-caption="舒適單人居室" data-filter="living"
+           style="height:180px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&h=360&q=80" alt="舒適單人居室">
         <div class="gallery-overlay"><div class="gallery-caption">舒適單人居室</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
-      <div class="gallery-item" data-src="" data-caption="圖書閱覽室" data-filter="activity"
-           style="height:200px;background:linear-gradient(135deg,#3a3a10,#6e6e20);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">📚</div>
+      <div class="gallery-item" data-caption="圖書閱覽室" data-filter="activity"
+           style="height:200px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=600&h=400&q=80" alt="圖書閱覽室">
         <div class="gallery-overlay"><div class="gallery-caption">圖書閱覽室</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
       <!-- Garden -->
-      <div class="gallery-item" data-src="" data-caption="康養花園步道" data-filter="garden"
-           style="height:280px;background:linear-gradient(135deg,#1a3a1a,#2e6e3a);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:6rem;">🌿</div>
+      <div class="gallery-item" data-caption="康養花園步道" data-filter="garden"
+           style="height:280px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&h=500&q=80" alt="康養花園步道">
         <div class="gallery-overlay"><div class="gallery-caption">康養花園步道</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
       <!-- Medical -->
-      <div class="gallery-item" data-src="" data-caption="現代化護理站" data-filter="medical"
-           style="height:180px;background:linear-gradient(135deg,#1a2a4a,#2e3a6e);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">🏥</div>
+      <div class="gallery-item" data-caption="現代化護理站" data-filter="medical"
+           style="height:180px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1587351021759-3e566b3db4f1?auto=format&fit=crop&w=600&h=360&q=80" alt="現代化護理站">
         <div class="gallery-overlay"><div class="gallery-caption">現代化護理站</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
-      <div class="gallery-item" data-src="" data-caption="物理治療室" data-filter="medical"
-           style="height:220px;background:linear-gradient(135deg,#3a1a3a,#6e2e6e);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">🏋️</div>
+      <div class="gallery-item" data-caption="物理治療室" data-filter="medical"
+           style="height:220px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=400&q=80" alt="物理治療室">
         <div class="gallery-overlay"><div class="gallery-caption">物理治療室</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
-      <!-- Activity -->
-      <div class="gallery-item" data-src="" data-caption="多功能餐廳" data-filter="living"
-           style="height:200px;background:linear-gradient(135deg,#6e3a1a,#4a1a10);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">🍽️</div>
+      <!-- Activity & More -->
+      <div class="gallery-item" data-caption="多功能餐廳" data-filter="living"
+           style="height:200px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&h=400&q=80" alt="多功能餐廳">
         <div class="gallery-overlay"><div class="gallery-caption">多功能餐廳</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
-      <div class="gallery-item" data-src="" data-caption="藝術工作室" data-filter="activity"
-           style="height:240px;background:linear-gradient(135deg,#1a3a3a,#2e6e6e);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">🎨</div>
+      <div class="gallery-item" data-caption="藝術工作室" data-filter="activity"
+           style="height:240px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1556742031-c6961e8560b0?auto=format&fit=crop&w=600&h=480&q=80" alt="藝術工作室">
         <div class="gallery-overlay"><div class="gallery-caption">藝術工作室</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
-      <div class="gallery-item" data-src="" data-caption="感官花園涼亭" data-filter="garden"
-           style="height:180px;background:linear-gradient(135deg,#2e5a1a,#4e8a2a);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">⛺</div>
+      <div class="gallery-item" data-caption="感官花園涼亭" data-filter="garden"
+           style="height:180px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=600&h=360&q=80" alt="感官花園涼亭">
         <div class="gallery-overlay"><div class="gallery-caption">感官花園涼亭</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
-      <div class="gallery-item" data-src="" data-caption="音樂活動室" data-filter="activity"
-           style="height:200px;background:linear-gradient(135deg,#3a1a10,#7a4a2a);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">🎵</div>
+      <div class="gallery-item" data-caption="音樂活動室" data-filter="activity"
+           style="height:200px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&h=400&q=80" alt="音樂活動室">
         <div class="gallery-overlay"><div class="gallery-caption">音樂活動室</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
-      <div class="gallery-item" data-src="" data-caption="豪華套房起居室" data-filter="living"
-           style="height:260px;background:linear-gradient(135deg,#2a1a3a,#5a3a6e);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:6rem;">🏡</div>
+      <div class="gallery-item" data-caption="豪華套房起居室" data-filter="living"
+           style="height:260px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1586105251261-72a756497a11?auto=format&fit=crop&w=600&h=500&q=80" alt="豪華套房起居室">
         <div class="gallery-overlay"><div class="gallery-caption">豪華套房起居室</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
-      <div class="gallery-item" data-src="" data-caption="職能治療室" data-filter="medical"
-           style="height:190px;background:linear-gradient(135deg,#1a3a2a,#2e6e5a);"
-           onclick="openGalleryItem(this)">
-        <div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;">✋</div>
+      <div class="gallery-item" data-caption="職能治療室" data-filter="medical"
+           style="height:190px;" onclick="openGalleryItem(this)">
+        <img class="gallery-thumb" src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=600&h=380&q=80" alt="職能治療室">
         <div class="gallery-overlay"><div class="gallery-caption">職能治療室</div></div>
-        <div class="gallery-zoom">🔍</div>
+        <div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
       </div>
     </div>
   </div>
