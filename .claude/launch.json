@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nursing-home",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3788", "."],
+      "port": 3788
+    }
+  ]
+}
